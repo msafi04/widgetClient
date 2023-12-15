@@ -91,10 +91,15 @@
     width: 6rem;
     height: 2rem;
     margin-top: 5px;
-    background-color: rgb(110, 248, 110);
+    background-color: rgb(65, 79, 65);
+    color: white;
     border-radius: 10px;
     border: none;
     font-weight: bold;
     font-size: 15px;
     cursor: pointer;
+}
+
+.submitBtn:disabled {
+    cursor:not-allowed;
 }
