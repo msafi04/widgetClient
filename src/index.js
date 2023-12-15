@@ -10,8 +10,9 @@ let style = document.createElement('style');
 style.textContent = cssText;
 document.head.appendChild(style);
 
-const widgetContainer = ReactDOM.createRoot(document.getElementById("survey-widget-container"))
-widgetContainer.render(
+// const widgetContainer = ReactDOM.createRoot(document.getElementById("survey-widget-container"))
+
+ReactDOM.createRoot(document.getElementById("survey-widget-container")).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
