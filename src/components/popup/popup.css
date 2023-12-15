@@ -1,0 +1,100 @@
+.container {
+    position: absolute;
+    height: 16rem;
+    width: 30%;
+    background-color: rgb(229, 208, 208);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    bottom: 0;
+    right: 2rem;
+    /* border-radius: 10px; */
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 5px;
+}
+
+.minContainer {
+    position: absolute;
+    height: 2rem;
+    width: 30%;
+    background-color: rgb(229, 208, 208);
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    right: 2rem;
+    border-radius: 5px;
+    /* background-color: rgb(248, 187, 187); */
+}
+
+.topBtn {
+    position: absolute;
+    height: 10%;
+    flex-direction: row;
+    align-items: center;
+    top: 1;
+    right: 10px;
+}
+
+.closeBtn {
+    color: rgb(79, 78, 78);
+    margin-left: 5px;
+}
+
+.minBtn {
+    font-size: 15px;
+    color: rgb(79, 78, 78);
+}
+
+.maxBtn {
+    font-size: 16px;
+    color: rgb(79, 78, 78);
+    margin-top: 5px;
+}
+
+.content {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    /* background-color: rgb(250, 249, 249); */
+    background-color: rgb(229, 208, 208);
+    height: 100%;
+}
+
+.header {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+    height: 20%;
+    margin-top: 30px;
+}
+
+.feedback {
+    height: 30%;
+    flex-direction: column;
+    padding: 5px;
+    /* background-color: red; */
+}
+
+.nextStep { 
+    font-size: 25px;
+    color: rgb(71, 70, 70);
+}
+
+.inputBox {
+    width: 80%;
+    height: 7rem;
+    margin-top: 0.2rem;
+}
+
+.submitBtn {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    width: 6rem;
+    height: 2rem;
+    margin-top: 5px;
+    background-color: rgb(110, 248, 110);
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}

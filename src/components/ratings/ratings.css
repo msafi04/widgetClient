@@ -1,0 +1,26 @@
+.ratingContainer {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    /* border-style:solid; */
+    border-width: 1px;
+    border-color: rgb(188, 186, 186);
+    align-items: center;
+    justify-content: center;
+}
+.rate {
+    font-size: medium;
+    color: rgb(66, 66, 66);
+    padding: 10px;
+    border-width: 1px;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: rgb(163, 161, 161);
+    font-size: medium;
+    color: rgb(66, 66, 66);
+    padding: 10px;
+    border-width: 1px;
+    cursor: pointer;
+}
