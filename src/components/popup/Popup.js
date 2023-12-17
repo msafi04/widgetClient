@@ -4,6 +4,7 @@ import { FaMinus, FaWindowMaximize, FaCircleArrowRight } from "react-icons/fa6";
 
 import "./popup.css";
 import Ratings from "../ratings/Ratings";
+import RatingIcons from "../ratingIcons/RatingIcons";
 
 const Popup = ({ closePopup, setClosePopup }) => {
   const [selectedNumber, setSelectedNumber] = useState(0);
@@ -50,28 +51,29 @@ const Popup = ({ closePopup, setClosePopup }) => {
     width: "6rem",
     height: "2rem",
     backgroundColor: "#414f41",
-    borderRadius: "14px"
+    borderRadius: "14px",
   };
 
   return (
     <div
       className={`${minimizePopup ? "popup-minContainer" : "popup-container"}`}
       style={minimizePopup ? minContainerStyle : containerStyle}
-      onClick={() => minimizePopup ? setMinimizePopup((prev) => !prev) : null}
+      onClick={() => (minimizePopup ? setMinimizePopup((prev) => !prev) : null)}
     >
       <div className="popup-topBtn">
-        {!minimizePopup ? (
-          <FaMinus
-            className="minBtn"
-            onClick={() => setMinimizePopup((prev) => !prev)}
-          />
-        ) : null
-        // (
+        {
+          !minimizePopup ? (
+            <FaMinus
+              className="minBtn"
+              onClick={() => setMinimizePopup((prev) => !prev)}
+            />
+          ) : null
+          // (
           // <FaWindowMaximize
           //   className="maxBtn"
           //   onClick={() => setMinimizePopup((prev) => !prev)}
           // />
-        //)
+          //)
         }
         <IoClose
           className="popup-closeBtn"
@@ -85,7 +87,16 @@ const Popup = ({ closePopup, setClosePopup }) => {
             How do you like our service?
           </p>
           <div className="popup-feedback">
-            <Ratings
+            {/* <Ratings
+              selectedNumber={selectedNumber}
+              setSelectedNumber={setSelectedNumber}
+            /> */}
+            <RatingIcons
+              iconCount={5}
+              iconType={"star"}
+              iconNoFillColor={"orange"}
+              iconFillColor={"orange"}
+              iconSize={"40px"}
               selectedNumber={selectedNumber}
               setSelectedNumber={setSelectedNumber}
             />
