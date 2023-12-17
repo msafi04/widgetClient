@@ -50,7 +50,7 @@ const Popup = ({ closePopup, setClosePopup }) => {
     width: "6rem",
     height: "2rem",
     backgroundColor: "#414f41",
-    borderRadius: "15px"
+    borderRadius: "14px"
   };
 
   return (

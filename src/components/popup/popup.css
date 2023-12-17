@@ -1,4 +1,4 @@
-.container {
+.popup-container {
     position: absolute;
     height: 16rem;
     width: 30%;
@@ -14,7 +14,7 @@
     padding: 5px;
 }
 
-.minContainer {
+.popup-minContainer {
     position: absolute;
     height: 2rem;
     width: 30%;
@@ -24,10 +24,9 @@
     bottom: 0;
     right: 2rem;
     border-radius: 5px;
-    /* background-color: rgb(248, 187, 187); */
 }
 
-.topBtn {
+.popup-topBtn {
     position: absolute;
     height: 10%;
     flex-direction: row;
@@ -36,9 +35,10 @@
     right: 10px;
 }
 
-.closeBtn {
+.popup-closeBtn {
     color: rgb(79, 78, 78);
     margin-left: 5px;
+    margin-top: 5px;
 }
 
 .minBtn {
@@ -52,7 +52,7 @@
     margin-top: 5px;
 }
 
-.content {
+.popup-content {
     flex: 1;
     align-items: center;
     justify-content: center;
@@ -61,32 +61,34 @@
     height: 100%;
 }
 
-.header {
+.popup-header {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: 24px;
     height: 20%;
     margin-top: 30px;
+    display: inline-block;
 }
 
-.feedback {
+.popup-feedback {
     height: 30%;
     flex-direction: column;
     padding: 5px;
     /* background-color: red; */
 }
 
-.nextStep { 
+.popup-nextStep { 
     font-size: 25px;
     color: rgb(71, 70, 70);
+    cursor: pointer;
 }
 
-.inputBox {
+.popup-inputBox {
     width: 80%;
     height: 7rem;
     margin-top: 0.2rem;
 }
 
-.submitBtn {
+.popup-submitBtn {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     width: 6rem;
     height: 2rem;
@@ -100,6 +102,6 @@
     cursor: pointer;
 }
 
-.submitBtn:disabled {
+.popup-submitBtn:disabled {
     cursor:not-allowed;
 }

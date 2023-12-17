@@ -9,6 +9,7 @@ const Ratings = ({ selectedNumber, setSelectedNumber }) => {
         const customStyle = {
           borderRight: index === 9 ? "1px" : "0",
           borderStyle: "solid",
+          borderColor: "black"
         };
         return (
           <span
