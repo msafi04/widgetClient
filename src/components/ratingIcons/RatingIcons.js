@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   FaHeart,
   FaRegHeart,
-  FaHand,
-  FaRegHand,
   FaFaceGrinBeam,
   FaRegFaceGrinBeam,
   FaFaceGrinHearts,
@@ -56,10 +54,10 @@ const RatingIcons = ({
   selectedNumber,
   setSelectedNumber,
 }) => {
-    const IconFillName = iconObject[iconType][0]
-    const IconNoFillName = iconObject[iconType][1]
+  const IconFillName = iconObject[iconType][0];
+  const IconNoFillName = iconObject[iconType][1];
 
-    console.log(IconFillName)
+  console.log(IconFillName);
   const iconNoFillStyle = {
     color: iconNoFillColor,
     fontSize: iconSize,

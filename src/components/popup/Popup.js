@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
-import { FaMinus, FaWindowMaximize, FaCircleArrowRight } from "react-icons/fa6";
+import { FaMinus, FaCircleArrowRight } from "react-icons/fa6";
 
 import "./popup.css";
 import Ratings from "../ratings/Ratings";
 import RatingIcons from "../ratingIcons/RatingIcons";
 
-const Popup = ({ closePopup, setClosePopup }) => {
+const Popup = ({ closePopup, setClosePopup, iconType = "scale" }) => {
   const [selectedNumber, setSelectedNumber] = useState(0);
   const [minimizePopup, setMinimizePopup] = useState(false);
   const [clickNext, setClickNext] = useState(false);
@@ -68,12 +68,6 @@ const Popup = ({ closePopup, setClosePopup }) => {
               onClick={() => setMinimizePopup((prev) => !prev)}
             />
           ) : null
-          // (
-          // <FaWindowMaximize
-          //   className="maxBtn"
-          //   onClick={() => setMinimizePopup((prev) => !prev)}
-          // />
-          //)
         }
         <IoClose
           className="popup-closeBtn"
@@ -87,19 +81,24 @@ const Popup = ({ closePopup, setClosePopup }) => {
             How do you like our service?
           </p>
           <div className="popup-feedback">
-            {/* <Ratings
+          {
+            iconType === "scale" ? (
+              <Ratings
               selectedNumber={selectedNumber}
               setSelectedNumber={setSelectedNumber}
-            /> */}
-            <RatingIcons
+            />
+            ) : (
+              <RatingIcons
               iconCount={5}
-              iconType={"star"}
+              iconType={iconType}
               iconNoFillColor={"orange"}
               iconFillColor={"orange"}
               iconSize={"40px"}
               selectedNumber={selectedNumber}
               setSelectedNumber={setSelectedNumber}
             />
+            )
+          }
           </div>
           <FaCircleArrowRight
             className="popup-nextStep"
