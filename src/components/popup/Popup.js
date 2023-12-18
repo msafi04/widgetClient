@@ -19,6 +19,8 @@ const Popup = ({ closePopup, setClosePopup, config }) => {
     setClosePopup(true);
   };
 
+  console.log(config?.iconType)
+
   const iconType = config?.iconType || "scale"
 
   const containerStyle = {

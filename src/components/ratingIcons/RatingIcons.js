@@ -57,7 +57,6 @@ const RatingIcons = ({
   const IconFillName = iconObject[iconType][0];
   const IconNoFillName = iconObject[iconType][1];
 
-  console.log(IconFillName);
   const iconNoFillStyle = {
     color: iconNoFillColor,
     fontSize: iconSize,
