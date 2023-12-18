@@ -6,7 +6,7 @@ import "./popup.css";
 import Ratings from "../ratings/Ratings";
 import RatingIcons from "../ratingIcons/RatingIcons";
 
-const Popup = ({ closePopup, setClosePopup, iconType = "scale" }) => {
+const Popup = ({ closePopup, setClosePopup, config }) => {
   const [selectedNumber, setSelectedNumber] = useState(0);
   const [minimizePopup, setMinimizePopup] = useState(false);
   const [clickNext, setClickNext] = useState(false);
@@ -18,6 +18,8 @@ const Popup = ({ closePopup, setClosePopup, iconType = "scale" }) => {
     setFormInput("");
     setClosePopup(true);
   };
+
+  const iconType = config?.iconType || "scale"
 
   const containerStyle = {
     backgroundColor: "#e5d0d0",

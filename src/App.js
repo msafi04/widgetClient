@@ -10,7 +10,7 @@ function App() {
   console.log(config)
   return (
     <div>
-      { !closePopup && <Popup closePopup={closePopup} setClosePopup={setClosePopup} />}
+      { !closePopup && <Popup closePopup={closePopup} setClosePopup={setClosePopup} config={config} />}
     </div>
   );
 }
