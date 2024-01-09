@@ -3,12 +3,14 @@ import { useState, useEffect } from "react";
 import Popup from "./components/popup/Popup";
 import useAxios from "./hooks/useAxios";
 
+// https://github.com/msafi04/widgetClient.git
+
 function App() {
   const [closePopup, setClosePopup] = useState(true);
 
   const bundleConfig = window.bundleConfig;
   console.log(bundleConfig);
-  
+
   const { response, error, isLoading } = useAxios({
     method: "POST",
     url: "/widget/get",
