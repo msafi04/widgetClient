@@ -19,16 +19,13 @@ const Popup = ({ closePopup, setClosePopup, config }) => {
     setClosePopup(true);
   };
 
-  console.log(config?.iconType)
-
-  const iconType = config?.iconType || "scale"
-
   const containerStyle = {
-    backgroundColor: "#e5d0d0",
+    backgroundColor: config?.widgetBGColor || "#e5d0d0",
+    right: `${config?.widgetPosition}rem` || "2rem",
   };
 
   const minContainerStyle = {
-    backgroundColor: "#e5d0d0",
+    backgroundColor: config?.widgetBGColor || "#e5d0d0",
   };
 
   const closeBtnStyle = {
@@ -37,27 +34,26 @@ const Popup = ({ closePopup, setClosePopup, config }) => {
   };
 
   const contentStyle = {
-    backgroundColor: "#e5d0d0",
+    backgroundColor: config?.widgetBGColor || "#e5d0d0",
   };
   const headerStyle = {
-    fontSize: "24px",
-    fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
-    color: "black",
+    fontSize: config?.headerFontSize || "20px",
+    fontFamily: config?.fontFamily || "Verdana, Geneva, Tahoma, sans-serif",
+    color: config?.headerTextColor || "black",
   };
   const clickNextStyle = {
-    fontSize: "25px",
-    color: "#5c5b5b",
+    fontSize: config?.nextButtonSize || "25px",
+    color: config?.nextButtonColor || "#5c5b5b",
   };
 
   const submitBtnStyle = {
-    fontSize: "15px",
-    color: "#fcfafa",
-    width: "6rem",
-    height: "2rem",
-    backgroundColor: "#414f41",
+    fontSize: config?.submitFontSize || "15px",
+    color: config?.submitTextColor || "#fcfafa",
+    width: config?.submitBtnWidth || "6rem",
+    height: config?.submitBtnHeight || "2rem",
+    backgroundColor: config?.submitButtonBG || "#414f41",
     borderRadius: "14px",
   };
-
   return (
     <div
       className={`${minimizePopup ? "popup-minContainer" : "popup-container"}`}
@@ -82,22 +78,22 @@ const Popup = ({ closePopup, setClosePopup, config }) => {
       {!minimizePopup && !clickNext && (
         <div className="popup-content" style={contentStyle}>
           <p className="popup-header" style={headerStyle}>
-            How do you like our service?
+            {config?.headerText}
           </p>
           <div className="popup-feedback">
           {
-            iconType === "scale" ? (
+            config?.iconName === "scale" ? (
               <Ratings
               selectedNumber={selectedNumber}
               setSelectedNumber={setSelectedNumber}
             />
             ) : (
               <RatingIcons
-              iconCount={5}
-              iconType={iconType}
-              iconNoFillColor={"orange"}
-              iconFillColor={"orange"}
-              iconSize={"40px"}
+              iconCount={config?.iconCount}
+              iconType={config?.iconName || "star"}
+              iconNoFillColor={config?.iconColor || "orange"}
+              iconFillColor={config?.iconColor || "orange"}
+              iconSize={config?.iconSize}
               selectedNumber={selectedNumber}
               setSelectedNumber={setSelectedNumber}
             />

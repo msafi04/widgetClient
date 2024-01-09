@@ -1,16 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import Popup from "./components/popup/Popup"
+import Popup from "./components/popup/Popup";
+import useAxios from "./hooks/useAxios";
 
 function App() {
+  const [closePopup, setClosePopup] = useState(true);
 
-  const [closePopup, setClosePopup] = useState(false)
+  const bundleConfig = window.bundleConfig;
+  console.log(bundleConfig);
+  
+  const { response, error, isLoading } = useAxios({
+    method: "POST",
+    url: "/widget/get",
+    // data: { id: bundleConfig?.productId, customerId: bundleConfig?.userId}
+    data: { id: "659cc3a2f4496379825c23ac" },
+  });
 
-  const config = window.bundleConfig
-  console.log(config)
+  useEffect(() => {
+    if (isLoading) setClosePopup(false);
+  }, [isLoading]);
+
   return (
     <div>
-      { !closePopup && <Popup closePopup={closePopup} setClosePopup={setClosePopup} config={config} />}
+      {!closePopup && (
+        <Popup
+          closePopup={closePopup}
+          setClosePopup={setClosePopup}
+          config={response}
+        />
+      )}
     </div>
   );
 }

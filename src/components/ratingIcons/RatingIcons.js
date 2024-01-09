@@ -54,8 +54,12 @@ const RatingIcons = ({
   selectedNumber,
   setSelectedNumber,
 }) => {
+
   const IconFillName = iconObject[iconType][0];
   const IconNoFillName = iconObject[iconType][1];
+
+  // const IconFillName = iconType ? iconObject[iconType][0] : AiFillStar;
+  // const IconNoFillName = iconType ? iconObject[iconType][1] : AiOutlineStar;
 
   const iconNoFillStyle = {
     color: iconNoFillColor,
