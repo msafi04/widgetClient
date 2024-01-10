@@ -5,16 +5,59 @@ import { FaMinus, FaCircleArrowRight } from "react-icons/fa6";
 import "./popup.css";
 import Ratings from "../ratings/Ratings";
 import RatingIcons from "../ratingIcons/RatingIcons";
+import { publicAxios } from "../../app/api/client";
 
-const Popup = ({ closePopup, setClosePopup, config }) => {
+const Popup = ({
+  closePopup,
+  setClosePopup,
+  config,
+  productId,
+  customerId,
+}) => {
   const [selectedNumber, setSelectedNumber] = useState(0);
   const [minimizePopup, setMinimizePopup] = useState(false);
   const [clickNext, setClickNext] = useState(false);
   const [formInput, setFormInput] = useState("");
 
-  const handleOnSubmit = (e) => {
+  const handleCancel = async (e) => {
     e.preventDefault();
-    console.log(formInput, selectedNumber);
+    try {
+      await publicAxios.post("/survey/post", {
+        id: productId,
+        customerId: customerId,
+        isCancelled: true,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+    setClosePopup(true);
+  };
+
+  const handleClickNext = async (e) => {
+    e.preventDefault();
+    try {
+      await publicAxios.post("/survey/post", {
+        id: productId,
+        customerId: customerId,
+        ratingsGiven: selectedNumber,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+    setClickNext(true);
+  };
+
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await publicAxios.post("/survey/post", {
+        id: productId,
+        customerId: customerId,
+        comment: formInput,
+      });
+    } catch (err) {
+      console.log(err);
+    }
     setFormInput("");
     setClosePopup(true);
   };
@@ -61,17 +104,15 @@ const Popup = ({ closePopup, setClosePopup, config }) => {
       onClick={() => (minimizePopup ? setMinimizePopup((prev) => !prev) : null)}
     >
       <div className="popup-topBtn">
-        {
-          !minimizePopup ? (
-            <FaMinus
-              className="minBtn"
-              onClick={() => setMinimizePopup((prev) => !prev)}
-            />
-          ) : null
-        }
+        {!minimizePopup ? (
+          <FaMinus
+            className="minBtn"
+            onClick={() => setMinimizePopup((prev) => !prev)}
+          />
+        ) : null}
         <IoClose
           className="popup-closeBtn"
-          onClick={() => setClosePopup(true)}
+          onClick={handleCancel}
           style={closeBtnStyle}
         />
       </div>
@@ -81,29 +122,27 @@ const Popup = ({ closePopup, setClosePopup, config }) => {
             {config?.headerText}
           </p>
           <div className="popup-feedback">
-          {
-            config?.iconName === "scale" ? (
+            {config?.iconName === "scale" ? (
               <Ratings
-              selectedNumber={selectedNumber}
-              setSelectedNumber={setSelectedNumber}
-            />
+                selectedNumber={selectedNumber}
+                setSelectedNumber={setSelectedNumber}
+              />
             ) : (
               <RatingIcons
-              iconCount={config?.iconCount}
-              iconType={config?.iconName || "star"}
-              iconNoFillColor={config?.iconColor || "orange"}
-              iconFillColor={config?.iconColor || "orange"}
-              iconSize={config?.iconSize}
-              selectedNumber={selectedNumber}
-              setSelectedNumber={setSelectedNumber}
-            />
-            )
-          }
+                iconCount={config?.iconCount}
+                iconType={config?.iconName || "star"}
+                iconNoFillColor={config?.iconColor || "orange"}
+                iconFillColor={config?.iconColor || "orange"}
+                iconSize={config?.iconSize}
+                selectedNumber={selectedNumber}
+                setSelectedNumber={setSelectedNumber}
+              />
+            )}
           </div>
           <FaCircleArrowRight
             className="popup-nextStep"
             style={clickNextStyle}
-            onClick={() => setClickNext(true)}
+            onClick={handleClickNext}
             disabled={selectedNumber === 0}
           />
         </div>

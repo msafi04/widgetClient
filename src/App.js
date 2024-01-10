@@ -9,13 +9,14 @@ function App() {
   const [closePopup, setClosePopup] = useState(true);
 
   const bundleConfig = window.bundleConfig;
-  console.log(bundleConfig);
+  // console.log(bundleConfig);
+  const customerId = "12345678"
 
   const { response, error, isLoading } = useAxios({
     method: "POST",
-    url: "/widget/get",
+    url: "/survey/get",
     // data: { id: bundleConfig?.productId, customerId: bundleConfig?.userId}
-    data: { id: "659cc3a2f4496379825c23ac" },
+    data: { id: "659cc3a2f4496379825c23ac", customerId: customerId },
   });
 
   useEffect(() => {
@@ -24,11 +25,13 @@ function App() {
 
   return (
     <div>
-      {!closePopup && (
+      {!closePopup && response && (
         <Popup
           closePopup={closePopup}
           setClosePopup={setClosePopup}
           config={response}
+          productId={"659cc3a2f4496379825c23ac"}
+          customerId={customerId}
         />
       )}
     </div>
