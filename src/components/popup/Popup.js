@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { FaMinus, FaCircleArrowRight } from "react-icons/fa6";
+import socketIOClient from "socket.io-client";
 
 import "./popup.css";
 import Ratings from "../ratings/Ratings";
@@ -18,9 +19,24 @@ const Popup = ({
   const [minimizePopup, setMinimizePopup] = useState(false);
   const [clickNext, setClickNext] = useState(false);
   const [formInput, setFormInput] = useState("");
+  const [socketData, setSocketData] = useState({});
+
+  useEffect(() => {
+    if (Object.keys(socketData).length) {
+      const socket = socketIOClient("http://localhost:3009/");
+      socket.emit("widgetStream", socketData);
+      setSocketData({});
+    }
+  }, [socketData]);
 
   const handleCancel = async (e) => {
     e.preventDefault();
+    setSocketData({
+      userId: productId,
+      customerId: customerId,
+      isCancelled: true,
+      updatedAt: new Date(),
+    });
     try {
       await publicAxios.post("/survey/post", {
         id: productId,
@@ -35,6 +51,12 @@ const Popup = ({
 
   const handleClickNext = async (e) => {
     e.preventDefault();
+    setSocketData({
+      userId: productId,
+      customerId: customerId,
+      ratingsGiven: selectedNumber,
+      updatedAt: new Date(),
+    });
     try {
       await publicAxios.post("/survey/post", {
         id: productId,
@@ -49,6 +71,12 @@ const Popup = ({
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+    setSocketData({
+      userId: productId,
+      customerId: customerId,
+      comment: formInput,
+      updatedAt: new Date(),
+    });
     try {
       await publicAxios.post("/survey/post", {
         id: productId,
